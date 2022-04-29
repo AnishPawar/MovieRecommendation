@@ -3,7 +3,7 @@ from flask_cors import CORS
 import pandas as pd
 from imdbGetData import returnMetaData
 import imdb
-
+from movierecommendation import recommend
 
 import datetime
 
@@ -31,13 +31,21 @@ def lander():
         if request.form.getlist('movieName'):
                 movieRet = request.form.getlist('movieName')[0]
                 # print(f"Gooo: {n_future}")
+                movie_name = movieRet[:-6].strip()
+                print(movie_name)
+                movies = recommend(movie_name)[:5]
+                names = [x['Title'] for x in movies]
 
-                links,titles,years,ratings = returnMetaData([movieRet],moviesDB)
+                print(movies)
+
+                links,titles,years,ratings = returnMetaData(names,moviesDB)
     print("OK2")
     return render_template('index.html',movieNames = movieNames,links=links,titles=titles,years=years,ratings = ratings)
 
 if __name__ == "__main__":
-    k = pd.read_csv('movies.csv')
+    k = pd.read_csv('assets/movies.csv')
     movieNames = k['title'].values.tolist()
     # movieNames = movieNames[:100]
     app.run()
+
+    # SOCD report detected: (AP watchdog expired)
