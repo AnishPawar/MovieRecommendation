@@ -21,15 +21,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
   </head>
   <body>
 
+    <script>
 
-    <div class="preloader">
-      <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-
-
-
+        $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+        $(window).on('load', function(){
+          setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+        });
+        function removeLoader(){
+            $( "#loadingDiv" ).fadeOut(500, function() {
+              // fadeOut complete. Remove the loading div
+              $( "#loadingDiv" ).remove(); //makes page more lightweight 
+          });  
+        }
+    </script>
 
     <header class="showcase">
       <!-- <div class="showcase-top"> -->
@@ -208,9 +212,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
               <p class="text-lg">
                 Rating: {{ratings[0]}}
               </p>
+              <p class="text-lg">
+                Genre: {{genres[0]}}
+              </p>
+              <p class="text-lg">
+                Runtime: {{runtimes[0]}} minutes
+              </p>
               <a href="#" class="btn btn-lg">Watch Now!</a>
             </div>
-            <img src="{{links[0]}}" alt="" />
+            <img class = "dbimg" src="{{links[0]}}" alt="" />
           </div>
         </div>
 
@@ -227,9 +237,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
               <p class="text-lg">
                 Rating: {{ratings[1]}}
               </p>
+              <p class="text-lg">
+                Genre: {{genres[1]}}
+              </p>
+              <p class="text-lg">
+                Runtime: {{runtimes[1]}} minutes
+              </p>
               <a href="#" class="btn btn-lg">Watch Now!</a>
             </div>
-            <img src="{{links[1]}}" alt="" />
+            <img class = "dbimg" src="{{links[1]}}" alt="" />
           </div>
         </div>
 
@@ -246,9 +262,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
               <p class="text-lg">
                 Rating: {{ratings[2]}}
               </p>
+              <p class="text-lg">
+                Genre: {{genres[2]}}
+              </p>
+              <p class="text-lg">
+                Runtime: {{runtimes[2]}} minutes
+              </p>
               <a href="#" class="btn btn-lg">Watch Now!</a>
             </div>
-            <img src="{{links[2]}}" alt="" />
+            <img class = "dbimg" src="{{links[2]}}" alt="" />
           </div>
         </div>
 
@@ -264,9 +286,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
               <p class="text-lg">
                 Rating: {{ratings[3]}}
               </p>
+              <p class="text-lg">
+                Genre: {{genres[3]}}
+              </p>
+              <p class="text-lg">
+                Runtime: {{runtimes[3]}} minutes
+              </p>
               <a href="#" class="btn btn-lg">Watch Now!</a>
             </div>
-            <img src="{{links[3]}}" alt="" />
+            <img class = "dbimg" src="{{links[3]}}" alt="" />
           </div>
         </div>
 
@@ -282,48 +310,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
               <p class="text-lg">
                 Rating: {{ratings[4]}}
               </p>
+              <p class="text-lg">
+                Genre: {{genres[4]}}
+              </p>
+              <p class="text-lg">
+                Runtime: {{runtimes[4]}} minutes
+              </p>
               <a href="#" class="btn btn-lg">Watch Now!</a>
             </div>
-            <img src="{{links[4]}}" alt="" />
+            <img class = "dbimg" src="{{links[4]}}" alt="" />
           </div>
         </div>
 
       </div>
     </section>
-
-    <!-- <footer class="footer">
-      <p>Questions? Call 1-866-579-7127</p>
-      <div class="footer-cols">
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Investor Relations</a></li>
-          <li><a href="#">Ways To Watch</a></li>
-          <li><a href="#">Corporate Information</a></li>
-          <li><a href="#">Netflix Originals</a></li>
-        </ul>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">Terms Of Use</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-        <ul>
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Redeem Gift Cards</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Speed Test</a></li>
-        </ul>
-        <ul>
-          <li><a href="#">Media Center</a></li>
-          <li><a href="#">Buy Gift Cards</a></li>
-          <li><a href="#">Cookie Preferences</a></li>
-          <li><a href="#">Legal Notices</a></li>
-        </ul>
-      </div>
-    </footer> -->
-    <!-- <script src="js/main.js"></script> -->
     <script type="text/javascript" src="/static/main.js"></script>
-    
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </body>
 </html>

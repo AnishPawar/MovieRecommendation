@@ -53,8 +53,13 @@ def recommend(movie_name):
         return "No movies found. Please check your input"
 
 
-vals = recommend("Thor: Ragnarok")[:5]
+vals = recommend("Avengers: Age of Ultron")[:5]
 
 names = [x['Title'] for x in vals]
-
-print(names)
+movies = [x[:-6].strip() for x in names]
+names_new = []
+for name in movies:
+    if name[-5:] == ", The":
+        name = "The " + name[:-5]
+    names_new.append(name)
+print(names_new)
