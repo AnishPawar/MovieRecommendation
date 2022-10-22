@@ -2,10 +2,7 @@
 from cProfile import run
 
 
-def returnMetaData(movieList,moviesDB):
-
-
-    
+def returnMetaData(movieList, moviesDB):
 
     # movieRetData = []
     links = []
@@ -20,35 +17,38 @@ def returnMetaData(movieList,moviesDB):
         temp = []
         movies = moviesDB.search_movie(i)
 
+        print(len(movies))
+        try:
+            id = movies[0].getID()
+            movie = moviesDB.get_movie(id)
 
+            # print("Cover url: %s" % movie['full-size cover url'])
 
-        id = movies[0].getID()
-        movie = moviesDB.get_movie(id)
+            # print(movie.keys())
 
-        # print("Cover url: %s" % movie['full-size cover url'])
+            title = movie['title']
+            year = movie['year']
+            rating = movie['rating']
+            genre = movie['genres']
+            runtime = movie['runtimes']
+            # directors = movie['directors']
+            # casting = movie['cast']
 
-        # print(movie.keys())
+            # temp.append([movie['cover url'],title,year])
+            # movieRetData.append(temp)
 
-        title = movie['title']
-        year = movie['year']
-        rating = movie['rating']
-        genre = movie['genres']
-        runtime = movie['runtimes']
-        # directors = movie['directors']
-        # casting = movie['cast']
+            print(title, year, rating, genre, runtime)
 
-        # temp.append([movie['cover url'],title,year])
-        # movieRetData.append(temp)
+            links.append(movie['full-size cover url'])
+            titles.append(title)
+            years.append(year)
+            ratings.append(rating)
+            genres.append(genre[0])
+            runtimes.append(runtime[0])
 
-        print(title,year,rating,genre,runtime)
+        except:
+            return '', '', 0, 0.0, '', 0.0
 
-        links.append(movie['full-size cover url'])
-        titles.append(title)
-        years.append(year)
-        ratings.append(rating)
-        genres.append(genre[0])
-        runtimes.append(runtime[0])
+    return links, titles, years, ratings, genres, runtimes
 
-    return links,titles,years,ratings,genres,runtimes
-        
     # moviesDB.
